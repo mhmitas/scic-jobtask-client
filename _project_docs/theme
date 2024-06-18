@@ -1,0 +1,58 @@
+:root {
+    --primary: #3b82f6;
+    /* Light Blue */
+    --primary-focus: #2563eb;
+    /* Focus State */
+    --primary-content: #ffffff;
+    /* Text on primary */
+
+    --secondary: #a855f7;
+    /* Soft Purple */
+    --secondary-focus: #9333ea;
+    /* Focus State */
+    --secondary-content: #ffffff;
+    /* Text on secondary */
+
+    --accent: #22c55e;
+    /* Fresh Green */
+    --accent-focus: #16a34a;
+    /* Focus State */
+    --accent-content: #ffffff;
+    /* Text on accent */
+
+    --neutral: #e5e7eb;
+    /* Light Gray */
+    --neutral-focus: #d1d5db;
+    /* Focus State */
+    --neutral-content: #1f2937;
+    /* Text on neutral */
+
+    --base-100: #ffffff;
+    /* White */
+    --base-200: #f3f4f6;
+    /* Light Gray Background */
+    --base-300: #e5e7eb;
+    /* Lighter Gray Background */
+    --base-content: #1f2937;
+    /* Text on base */
+
+    --info: #38bdf8;
+    /* Light Blue */
+    --info-content: #ffffff;
+    /* Text on info */
+
+    --success: #10b981;
+    /* Vibrant Green */
+    --success-content: #ffffff;
+    /* Text on success */
+
+    --warning: #f59e0b;
+    /* Bright Orange */
+    --warning-content: #ffffff;
+    /* Text on warning */
+
+    --error: #ef4444;
+    /* Strong Red */
+    --error-content: #ffffff;
+    /* Text on error */
+}
