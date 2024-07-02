@@ -12,7 +12,7 @@ export default {
       'light',
       {
         lightTheme: {
-          "primary": "#3b82f6",
+          "primary": "##1f6feb", // 3b82f6
           "secondary": "#a3e635",
           "accent": "#f43f5e",
           "info": "#38bdf8",
@@ -25,7 +25,7 @@ export default {
           'base-content': 'black',
         }, // primary: 3b82f6; secondary: a3e635
         darkTheme: {
-          "primary": "#3b82f6",
+          "primary": "##1f6feb", // 3b82f6
           "secondary": "#fff",
           "accent": "#37cdbe",
           "base-100": "#1d1e1f",
