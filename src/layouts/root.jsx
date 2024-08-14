@@ -19,9 +19,9 @@ const Root = () => {
 
     return (
         <ThemeProvider theme={muiTheme}>
-            <div className='min-h-screen flex flex-col justify-between relative'>
+            <div className='min-h-screen relative flex flex-col'>
                 <Navbar />
-                <div className='max-w-screen-2xl mx-auto w-full'>
+                <div className='max-w-screen-2xl mx-auto w-full flex-1'>
                     <Outlet></Outlet>
                 </div>
                 <Footer></Footer>

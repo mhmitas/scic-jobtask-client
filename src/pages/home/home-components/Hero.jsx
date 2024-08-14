@@ -4,12 +4,12 @@ import React from 'react';
 const Hero = () => {
     return (
         <div className='w-full'>
-            <div className="h-[550px] flex flex-col justify-center items-center w-full bg-base-100 ">
+            <div className="h-[500px] flex flex-col justify-center items-center w-full bg-base-100 mb-16">
                 <h1 className="text-5xl font-bold mb-4 text-center pt-6">
-                    Welcome to Our Website
+                    Welcome to Our Shop
                 </h1>
                 <p className="text-xl mb-8 text-center">
-                    We provide the best solutions for your business.
+                    We provide the best solutions for your daily purpose.
                 </p>
                 <div className='flex gap-2'>
                     <Button sx={{ borderRadius: 100 }} variant='contained'>

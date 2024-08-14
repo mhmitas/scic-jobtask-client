@@ -1,0 +1,170 @@
+[
+    {
+        "productName": "iPhone 14 Pro",
+        "productImage": "default-product.png",
+        "description": "The latest iPhone with A16 Bionic chip, 120Hz ProMotion display, and advanced camera system.",
+        "price": 999,
+        "category": "Smartphone",
+        "ratings": 4.8
+    },
+    {
+        "productName": "MacBook Air M2",
+        "productImage": "default-product.png",
+        "description": "Ultralight laptop with M2 chip, 13.6-inch Retina display, and all-day battery life.",
+        "price": 1199,
+        "category": "Laptop",
+        "ratings": 4.7
+    },
+    {
+        "productName": "iPad Pro 12.9-inch",
+        "productImage": "default-product.png",
+        "description": "Powerful tablet with M2 chip, 12.9-inch Liquid Retina XDR display, and 5G connectivity.",
+        "price": 1099,
+        "category": "Tablet",
+        "ratings": 4.9
+    },
+    {
+        "productName": "Apple Watch Series 8",
+        "productImage": "default-product.png",
+        "description": "Advanced health features, always-on display, and fast charging.",
+        "price": 399,
+        "category": "Wearable",
+        "ratings": 4.6
+    },
+    {
+        "productName": "AirPods Pro (2nd generation)",
+        "productImage": "default-product.png",
+        "description": "Active Noise Cancellation, Transparency mode, and spatial audio.",
+        "price": 249,
+        "category": "Audio",
+        "ratings": 4.7
+    },
+    {
+        "productName": "iMac 24-inch M1",
+        "productImage": "default-product.png",
+        "description": "All-in-one desktop with M1 chip, 4.5K Retina display, and vibrant color options.",
+        "price": 1299,
+        "category": "Desktop",
+        "ratings": 4.8
+    },
+    {
+        "productName": "MacBook Pro 16-inch M2 Pro",
+        "productImage": "default-product.png",
+        "description": "High-performance laptop with M2 Pro chip, 16-inch Retina display, and extended battery life.",
+        "price": 2499,
+        "category": "Laptop",
+        "ratings": 4.9
+    },
+    {
+        "productName": "iPad Air (5th generation)",
+        "productImage": "default-product.png",
+        "description": "Versatile tablet with M1 chip, 10.9-inch Liquid Retina display, and support for Apple Pencil.",
+        "price": 599,
+        "category": "Tablet",
+        "ratings": 4.7
+    },
+    {
+        "productName": "HomePod mini",
+        "productImage": "default-product.png",
+        "description": "Compact smart speaker with Siri, powerful sound, and home automation capabilities.",
+        "price": 99,
+        "category": "Smart Home",
+        "ratings": 4.6
+    },
+    {
+        "productName": "Apple TV 4K",
+        "productImage": "default-product.png",
+        "description": "Streaming device with A15 Bionic chip, Dolby Vision, and immersive sound.",
+        "price": 179,
+        "category": "Entertainment",
+        "ratings": 4.8
+    },
+    {
+        "productName": "Mac mini M2",
+        "productImage": "default-product.png",
+        "description": "Compact desktop with M2 chip, up to 64GB unified memory, and various storage options.",
+        "price": 699,
+        "category": "Desktop",
+        "ratings": 4.7
+    },
+    {
+        "productName": "Apple Pencil (2nd generation)",
+        "productImage": "default-product.png",
+        "description": "Precision drawing tool with magnetic attachment, wireless charging, and double-tap feature.",
+        "price": 129,
+        "category": "Accessory",
+        "ratings": 4.9
+    },
+    {
+        "productName": "Magic Keyboard for iPad Pro 12.9-inch",
+        "productImage": "default-product.png",
+        "description": "Keyboard case with trackpad, backlit keys, and floating cantilever design.",
+        "price": 349,
+        "category": "Accessory",
+        "ratings": 4.8
+    },
+    {
+        "productName": "iPhone SE (3rd generation)",
+        "productImage": "default-product.png",
+        "description": "Affordable iPhone with A15 Bionic chip, 4.7-inch Retina HD display, and Touch ID.",
+        "price": 429,
+        "category": "Smartphone",
+        "ratings": 4.5
+    },
+    {
+        "productName": "Apple Watch SE (2nd generation)",
+        "productImage": "default-product.png",
+        "description": "Affordable smartwatch with essential features, Retina display, and fitness tracking.",
+        "price": 279,
+        "category": "Wearable",
+        "ratings": 4.6
+    },
+    {
+        "productName": "AirPods Max",
+        "productImage": "default-product.png",
+        "description": "Over-ear headphones with high-fidelity audio, Active Noise Cancellation, and spatial audio.",
+        "price": 549,
+        "category": "Audio",
+        "ratings": 4.7
+    },
+    {
+        "productName": "Magic Mouse",
+        "productImage": "default-product.png",
+        "description": "Wireless mouse with multi-touch surface for gestures and smooth navigation.",
+        "price": 79,
+        "category": "Accessory",
+        "ratings": 4.4
+    },
+    {
+        "productName": "Apple AirTag",
+        "productImage": "default-product.png",
+        "description": "Item tracker with precision finding, Ultra-Wideband technology, and Find My network support.",
+        "price": 29,
+        "category": "Accessory",
+        "ratings": 4.8
+    },
+    {
+        "productName": "MacBook Pro 14-inch M2 Max",
+        "productImage": "default-product.png",
+        "description": "Pro-level laptop with M2 Max chip, 14-inch Liquid Retina XDR display, and advanced thermal design.",
+        "price": 3099,
+        "category": "Laptop",
+        "ratings": 4.9
+    },
+    {
+        "productName": "iPhone 14",
+        "productImage": "default-product.png",
+        "description": "Latest iPhone with A16 Bionic chip, advanced dual-camera system, and improved battery life.",
+        "price": 799,
+        "category": "Smartphone",
+        "ratings": 4.7
+    },
+    {
+        "productName": "Apple Watch Ultra",
+        "productImage": "default-product.png",
+        "description": "Premium smartwatch with rugged design, advanced health sensors, and extended battery life.",
+        "price": 799,
+        "category": "Wearable",
+        "ratings": 4.8
+    }
+]
