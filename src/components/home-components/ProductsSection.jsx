@@ -1,21 +1,31 @@
 import { useQuery } from '@tanstack/react-query';
-import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import ProductCard from '../cards/ProductCard';
+import { axiosInstance } from '../../hooks/useAxios';
+import ProductsSectionHeader from './ProductsSectionHeader';
 
 const ProductsSection = () => {
-    const [products, setProducts] = useState([])
+    const [searchText, setSearchText] = useState("")
 
-    useEffect(() => {
-        axios.get("/products.json")
-            .then(({ data }) => setProducts(data))
-            .catch(err => console.error(err))
-    }, [])
+    const { data: products = [], isLoading, error, refetch } = useQuery({
+        queryKey: [`products`, searchText],
+        queryFn: async () => {
+            const { data } = await axiosInstance(`/products?search=${searchText}`)
+            // console.log(data);
+            return data
+        }
+    })
+
+    if (error) console.error(error);
 
 
     return (
-        <section className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 my-container mb-16'>
-            {products.map((product, index) => <ProductCard key={index} product={product} />)}
+        <section className='mb-16 my-container'>
+            <ProductsSectionHeader searchText={searchText} setSearchText={setSearchText} />
+            <p className='mb-4'>Total Products: {products?.length}</p>
+            <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6'>
+                {products.map((product, index) => <ProductCard key={index} product={product} />)}
+            </div>
         </section>
     );
 };

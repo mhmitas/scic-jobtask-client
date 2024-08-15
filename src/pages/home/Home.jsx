@@ -4,10 +4,10 @@ import ProductsSectionHeader from '../../components/home-components/ProductsSect
 import ProductsSection from '../../components/home-components/ProductsSection';
 
 const Home = () => {
+
     return (
         <div className='min-h-screen'>
             <Hero />
-            <ProductsSectionHeader />
             <ProductsSection />
         </div>
     );

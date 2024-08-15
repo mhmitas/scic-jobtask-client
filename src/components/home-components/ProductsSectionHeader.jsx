@@ -1,16 +1,31 @@
 import React from 'react';
 import { FaSearch } from 'react-icons/fa';
 
-const ProductsSectionHeader = () => {
+const ProductsSectionHeader = ({ searchText, setSearchText }) => {
+
+    function handleSearch(e) {
+        e.preventDefault()
+        const texts = e.target.search.value;
+        if (texts.length < 3) {
+            return;
+        }
+        setSearchText(texts)
+    }
+
     return (
-        <header className='max-w-3xl mx-auto space-y-4 my-container mb-8'>
-            <div className='form-controller join w-full'>
+        <header className='max-w-3xl mx-auto space-y-4 mb-8'>
+            <form onSubmit={handleSearch} className='form-controller join w-full'>
                 <label className="input input-bordered flex items-center gap-2 join-item flex-1">
                     <FaSearch />
-                    <input type="text" className="grow" placeholder="Search" />
+                    <input
+                        type="text"
+                        className="grow"
+                        name='search'
+                        placeholder="Search"
+                    />
                 </label>
-                <button className='btn btn-primary join-item text-lg'><FaSearch /></button>
-            </div>
+                <button type='submit' className='btn btn-primary join-item text-lg'><FaSearch /></button>
+            </form>
             <div className='flex justify-end gap-4'>
                 <div className='form-controller'>
                     <select defaultValue={"all"} className='select select-bordered'>
