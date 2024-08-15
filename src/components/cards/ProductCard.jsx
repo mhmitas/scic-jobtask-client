@@ -1,12 +1,12 @@
 import React from 'react';
 
 const ProductCard = ({ product }) => {
-    const { productName, description, price, ratings, _d, category } = product;
+    const { productName, description, price, ratings, _d, category, productImage } = product;
 
     return (
         <div className="card card-compact shadow bg-base-200 rounded-lg">
-            <figure className='bg-black'>
-                <img src={`https://placehold.co/250X150/gray/white?font=lato&text=${product?.productName}`} alt={productName} className='rounded w-full' />
+            <figure className='bg-white aspect-[4/3]'>
+                <img src={productImage} alt={productName} className='rounded h-full' />
             </figure>
             <div className="card-body">
                 <div className=''>

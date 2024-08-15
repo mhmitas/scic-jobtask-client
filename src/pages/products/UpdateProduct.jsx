@@ -2,13 +2,16 @@ import React from "react";
 import { useForm } from "react-hook-form";
 import { axiosInstance } from "../../hooks/useAxios";
 import toast from "react-hot-toast";
+import { useParams } from "react-router-dom";
 
-const AddNewProduct = () => {
+const UpdateProduct = () => {
+    const { id } = useParams()
     const {
         register,
         handleSubmit,
         formState: { errors },
     } = useForm();
+
 
     const onSubmit = async (data) => {
         try {
@@ -116,4 +119,4 @@ const AddNewProduct = () => {
     );
 };
 
-export default AddNewProduct;
+export default UpdateProduct;
