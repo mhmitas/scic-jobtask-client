@@ -36,7 +36,7 @@ const Navbar = () => {
                     <Link to='/'><button className='btn btn-ghost text-2xl font-semibold'>MhStore</button></Link>
                 </div>
                 <div className="navbar-center flex flex-1 justify-center">
-                    <ul className="px-1 flex items-center">
+                    <ul className="px-1 flex items-center menu">
                         {navlinks}
                     </ul>
                 </div>
