@@ -38,9 +38,9 @@ const Login = () => {
     return (
         <Container>
             <div className='my-12'>
-                <h3 className='text-2xl sm:text-4xl font-semibold text-center mb-6'><Link to='/'>Ipsum</Link></h3>
+                <h3 className='text-2xl sm:text-4xl font-semibold text-center mb-6'><Link to='/'>MhShop</Link></h3>
                 <div className='max-w-md mx-auto bg-base-100 p-4 sm:p-6 md:p-8 rounded-md shadow-lg '>
-                    <h3 className='text-2xl text-center font-semibold pb-4'>Log in to Ipsum</h3>
+                    <h3 className='text-2xl text-center font-semibold pb-4'>Log in to MhShop</h3>
                     <form onSubmit={handleSubmit(onSubmit)} className='space-y-2'>
                         {errorMessage && <AuthenticationErrMessage />}
                         <div className="form-control">

@@ -7,6 +7,10 @@
     @apply px-4 md:px-6
 }
 
+.title-1 {
+    @apply text-3xl font-semibold text-center
+}
+
 /* --------------
 daisyui myTheme
 ---------------- */

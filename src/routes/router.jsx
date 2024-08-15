@@ -4,6 +4,7 @@ import Root from '../layouts/root';
 import Home from '../pages/home/Home';
 import Login from '../pages/authentication/Login';
 import Signup from '../pages/authentication/Signup';
+import AddNewProduct from '../pages/products/AddNewProduct';
 
 const router = createBrowserRouter([
     {
@@ -13,6 +14,10 @@ const router = createBrowserRouter([
             {
                 path: '/',
                 element: <Home />
+            },
+            {
+                path: "/add-new-product",
+                element: <AddNewProduct />
             }
         ],
     },
