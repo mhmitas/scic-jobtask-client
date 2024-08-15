@@ -6,7 +6,7 @@ const ProductCard = ({ product }) => {
     return (
         <div className="card card-compact shadow bg-base-200 rounded-lg">
             <figure className='bg-black'>
-                <img src={`https://placehold.co/250X320/gray/white?font=lato&text=${product?.productName}`} alt="" className='rounded' />
+                <img src={`https://placehold.co/250X150/gray/white?font=lato&text=${product?.productName}`} alt={productName} className='rounded w-full' />
             </figure>
             <div className="card-body">
                 <div className=''>

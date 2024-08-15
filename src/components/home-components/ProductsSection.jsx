@@ -18,11 +18,13 @@ const ProductsSection = () => {
 
     if (error) console.error(error);
 
-
     return (
         <section className='mb-16 my-container'>
-            <ProductsSectionHeader searchText={searchText} setSearchText={setSearchText} />
-            <p className='mb-4'>Total Products: {products?.length}</p>
+            <ProductsSectionHeader searchText={searchText} setSearchText={setSearchText} refetch={refetch} />
+            {isLoading ?
+                <p className='mb-4'>Loading...</p> :
+                <p className='mb-4'>Total Products: {products?.length}</p>
+            }
             <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6'>
                 {products.map((product, index) => <ProductCard key={index} product={product} />)}
             </div>

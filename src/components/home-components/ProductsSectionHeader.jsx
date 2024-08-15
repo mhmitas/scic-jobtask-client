@@ -1,7 +1,7 @@
 import React from 'react';
 import { FaSearch } from 'react-icons/fa';
 
-const ProductsSectionHeader = ({ searchText, setSearchText }) => {
+const ProductsSectionHeader = ({ setSearchText, refetch }) => {
 
     function handleSearch(e) {
         e.preventDefault()
@@ -13,11 +13,17 @@ const ProductsSectionHeader = ({ searchText, setSearchText }) => {
     }
 
     return (
-        <header className='max-w-3xl mx-auto space-y-4 mb-8'>
+        <header className='max-w-3xl mx-auto space-y-4 mb-6'>
             <form onSubmit={handleSearch} className='form-controller join w-full'>
                 <label className="input input-bordered flex items-center gap-2 join-item flex-1">
                     <FaSearch />
                     <input
+                        onChange={(e) => {
+                            if (e.target.value == 0) {
+                                setSearchText("")
+                                refetch()
+                            }
+                        }}
                         type="text"
                         className="grow"
                         name='search'
