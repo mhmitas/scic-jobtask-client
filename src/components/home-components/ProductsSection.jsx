@@ -6,7 +6,7 @@ import ProductsSectionHeader from './ProductsSectionHeader';
 
 const ProductsSection = () => {
     const topRef = useRef(null)
-    const [sortBy, setSortBy] = useState("releaseDate")
+    const [sortBy, setSortBy] = useState("releasedDate")
     const [categoryBy, setCategoryBy] = useState("")
     const [searchText, setSearchText] = useState("")
     useState
@@ -124,7 +124,7 @@ const ProductsSection = () => {
                             className='select select-bordered select-sm rounded'
                         >
                             {pages.map(page => <option
-                                value={page}
+                                value={page} key={page}
                             >{page + 1}</option>)}
                         </select>
                     </div>

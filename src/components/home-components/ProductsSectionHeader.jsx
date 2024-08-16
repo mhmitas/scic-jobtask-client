@@ -10,6 +10,7 @@ const ProductsSectionHeader = ({ setSearchText, refetch, setSortBy, setCategoryB
             return;
         }
         setSearchText(texts)
+        setSortBy("")
         handleResetSkipAndCurrentPage()
     }
 
@@ -61,7 +62,7 @@ const ProductsSectionHeader = ({ setSearchText, refetch, setSortBy, setCategoryB
                         className='select select-bordered'
                     >
                         <option className='hidden' value="all">Sort By</option>
-                        <option value="releaseDate">Date Release</option>
+                        <option value="releasedDate">Date Release</option>
                         <option value="priceLowToHigh">Price Low to High</option>
                         <option value="priceHighToLow">Price High to Low</option>
                     </select>
