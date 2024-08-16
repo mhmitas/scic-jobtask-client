@@ -1,7 +1,7 @@
 import React from 'react';
 import { FaSearch } from 'react-icons/fa';
 
-const ProductsSectionHeader = ({ setSearchText, refetch, setSortBy, setCategoryBy }) => {
+const ProductsSectionHeader = ({ setSearchText, refetch, setSortBy, setCategoryBy, topRef, handleResetSkipAndCurrentPage }) => {
 
     function handleSearch(e) {
         e.preventDefault()
@@ -10,10 +10,11 @@ const ProductsSectionHeader = ({ setSearchText, refetch, setSortBy, setCategoryB
             return;
         }
         setSearchText(texts)
+        handleResetSkipAndCurrentPage()
     }
 
     return (
-        <header className='max-w-3xl mx-auto space-y-4 mb-6'>
+        <header ref={topRef} className='max-w-3xl mx-auto space-y-4 mb-6'>
             <form onSubmit={handleSearch} className='form-controller join w-full'>
                 <label className="input input-bordered flex items-center gap-2 join-item flex-1">
                     <FaSearch />
@@ -38,6 +39,7 @@ const ProductsSectionHeader = ({ setSearchText, refetch, setSortBy, setCategoryB
                         onChange={(e) => {
                             let category = e.target.value;
                             setCategoryBy(category)
+                            handleResetSkipAndCurrentPage()
                         }}
                         defaultValue={"all"}
                         className='select select-bordered'>
