@@ -1,7 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { FaSearch } from 'react-icons/fa';
+import FilterProducts from '../modals/FilterProducts';
+import { GoFilter } from 'react-icons/go';
 
 const ProductsSectionHeader = ({ setSearchText, refetch, setSortBy, setCategoryBy, topRef, handleResetSkipAndCurrentPage }) => {
+    const [showFilterModal, setShowFilterModal] = useState(false);
 
     function handleSearch(e) {
         e.preventDefault()
@@ -15,7 +18,7 @@ const ProductsSectionHeader = ({ setSearchText, refetch, setSortBy, setCategoryB
     }
 
     return (
-        <header ref={topRef} className='max-w-3xl mx-auto space-y-4 mb-6'>
+        <header ref={topRef} className='max-w-3xl mx-auto *:mb-4 mb-6'>
             <form onSubmit={handleSearch} className='form-controller join w-full'>
                 <label className="input input-bordered flex items-center gap-2 join-item flex-1">
                     <FaSearch />
@@ -36,28 +39,15 @@ const ProductsSectionHeader = ({ setSearchText, refetch, setSortBy, setCategoryB
             </form>
             <div className='flex justify-end gap-4'>
                 <div className='form-controller'>
-                    <select
-                        onChange={(e) => {
-                            let category = e.target.value;
-                            setCategoryBy(category)
-                            handleResetSkipAndCurrentPage()
-                        }}
-                        defaultValue={"all"}
-                        className='select select-bordered'>
-                        <option className='hidden' >Category</option>
-                        <option value="">All</option>
-                        <option value="smartphone">iPhone</option>
-                        <option value="tablet">iPad</option>
-                        <option value="laptop">Mac</option>
-                        <option value="watch">Watch</option>
-                        <option value="airpods">AirPods</option>
-                    </select>
+                    <button onClick={() => setShowFilterModal(true)} className='btn text-base'>Filter<GoFilter /></button>
                 </div>
                 <div className='form-controller'>
                     <select
                         onChange={(e) => {
                             let sort = e.target.value;
                             setSortBy(sort)
+                            console.log(sort);
+
                         }}
                         className='select select-bordered'
                     >
@@ -68,6 +58,7 @@ const ProductsSectionHeader = ({ setSearchText, refetch, setSortBy, setCategoryB
                     </select>
                 </div>
             </div>
+            {showFilterModal && <FilterProducts setCategoryBy={setCategoryBy} handleResetSkipAndCurrentPage={handleResetSkipAndCurrentPage} setShowModal={setShowFilterModal} />}
         </header>
     );
 };
