@@ -5,23 +5,43 @@ import { axiosInstance } from '../../hooks/useAxios';
 import ProductsSectionHeader from './ProductsSectionHeader';
 
 const ProductsSection = () => {
+    const [sortBy, setSortBy] = useState("releaseDate")
+    const [categoryBy, setCategoryBy] = useState("")
     const [searchText, setSearchText] = useState("")
-
-    const { data: products = [], isLoading, error, refetch } = useQuery({
-        queryKey: [`products`, searchText],
+    const [skip, setSkip] = useState(0)
+    const [limit, setLimit] = useState(12)
+    // get total products count
+    const { data: totalProducts = 0, isLoading: isCounting, error: countingError, refetch: reCount } = useQuery({
+        queryKey: [`total-products`, categoryBy, searchText],
         queryFn: async () => {
-            const { data } = await axiosInstance(`/products?search=${searchText}`)
+            const { data } = await axiosInstance(`/total-products?category=${categoryBy}&search=${searchText}`)
+            console.log(data);
+            return data
+        }
+    })
+    const pages = [...Array(totalProducts).keys()]
+    // get products
+    const { data: products = [], isLoading, error, refetch } = useQuery({
+        queryKey: [`products`, sortBy, categoryBy, searchText],
+        queryFn: async () => {
+            const { data } = await axiosInstance(`/products?category=${categoryBy}&sort=${sortBy}&search=${searchText}&limit=${limit}&skip=${skip}`)
             // console.log(data);
             return data
         }
     })
 
-    if (error) console.error(error);
+    if (countingError) console.error(countingError);
 
     return (
         <section className='mb-16 my-container'>
-            <ProductsSectionHeader searchText={searchText} setSearchText={setSearchText} refetch={refetch} />
-            {isLoading ?
+            <ProductsSectionHeader
+                searchText={searchText}
+                setSearchText={setSearchText}
+                refetch={reCount}
+                setSortBy={setSortBy}
+                setCategoryBy={setCategoryBy}
+            />
+            {isCounting ?
                 <p className='mb-4'>Loading...</p> :
                 <p className='mb-4'>Total Products: {products?.length}</p>
             }

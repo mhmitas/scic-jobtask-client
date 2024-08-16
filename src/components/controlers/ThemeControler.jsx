@@ -1,15 +1,14 @@
 import React, { useContext } from 'react';
 import { IoSunnyOutline, IoMoonOutline } from "react-icons/io5";
 import { ThemeContext } from '../../providers/ThemeProvider';
-import { Button, IconButton } from '@mui/material';
 
 const ThemeController = () => {
     const { handleTheme, theme } = useContext(ThemeContext)
     return (
         <div>
-            <IconButton onClick={handleTheme} >
-                {theme === 'darkTheme' ? <IoMoonOutline className='text-base-content' size={20} /> : <IoSunnyOutline className='text-base-content' size={20} />}
-            </IconButton >
+            <button onClick={handleTheme} className='btn btn-sm btn-circle btn-ghost text-xl sm:text-2xl'>
+                {theme === 'darkTheme' ? <IoMoonOutline className='text-base-content' /> : <IoSunnyOutline className='text-base-content' />}
+            </button>
         </div>
     );
 };

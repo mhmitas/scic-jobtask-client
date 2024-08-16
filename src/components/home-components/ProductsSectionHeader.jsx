@@ -1,7 +1,7 @@
 import React from 'react';
 import { FaSearch } from 'react-icons/fa';
 
-const ProductsSectionHeader = ({ setSearchText, refetch }) => {
+const ProductsSectionHeader = ({ setSearchText, refetch, setSortBy, setCategoryBy }) => {
 
     function handleSearch(e) {
         e.preventDefault()
@@ -34,21 +34,34 @@ const ProductsSectionHeader = ({ setSearchText, refetch }) => {
             </form>
             <div className='flex justify-end gap-4'>
                 <div className='form-controller'>
-                    <select defaultValue={"all"} className='select select-bordered'>
-                        <option value="all">All</option>
-                        <option value="iphone">iPhone</option>
-                        <option value="iPad">iPad</option>
-                        <option value="Mac">Mac</option>
-                        <option value="Watch">Watch</option>
-                        <option value="AirPods">AirPods</option>
+                    <select
+                        onChange={(e) => {
+                            let category = e.target.value;
+                            setCategoryBy(category)
+                        }}
+                        defaultValue={"all"}
+                        className='select select-bordered'>
+                        <option className='hidden' >Category</option>
+                        <option value="">All</option>
+                        <option value="smartphone">iPhone</option>
+                        <option value="tablet">iPad</option>
+                        <option value="laptop">Mac</option>
+                        <option value="watch">Watch</option>
+                        <option value="airpods">AirPods</option>
                     </select>
                 </div>
                 <div className='form-controller'>
-                    <select className='select select-bordered'>
+                    <select
+                        onChange={(e) => {
+                            let sort = e.target.value;
+                            setSortBy(sort)
+                        }}
+                        className='select select-bordered'
+                    >
                         <option className='hidden' value="all">Sort By</option>
-                        <option value="all">Date Release</option>
-                        <option value="all">Price Low to High</option>
-                        <option value="all">Price High to Low</option>
+                        <option value="releaseDate">Date Release</option>
+                        <option value="priceLowToHigh">Price Low to High</option>
+                        <option value="priceHighToLow">Price High to Low</option>
                     </select>
                 </div>
             </div>
