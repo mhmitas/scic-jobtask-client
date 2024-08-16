@@ -17,7 +17,7 @@ const ProductsSection = () => {
 
     // get total products count
     const { data: totalProducts = 0, isLoading: isCounting, error: countingError, refetch: reCount } = useQuery({
-        queryKey: [`total-products`, categoryBy, searchText],
+        queryKey: [`total-products`, categoryBy, searchText, limit],
         queryFn: async () => {
             const { data } = await axiosInstance(`/total-products?category=${categoryBy}&search=${searchText}`)
             // console.log(data);
@@ -25,7 +25,7 @@ const ProductsSection = () => {
             const totalPages = Math.ceil(totalProducts / limit)
             const pages = [...Array(totalPages).keys()]
             setPages(pages)
-            return data?.totalProducts
+            return totalProducts
         }
     })
 
@@ -62,11 +62,11 @@ const ProductsSection = () => {
                 <p className='mb-4'>Loading...</p> :
                 <p className='mb-4'>Total Products: {totalProducts}</p>
             }
-            <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 mb-8'>
+            <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 mb-10'>
                 {products.map((product, index) => <ProductCard key={index} product={product} />)}
             </div>
-            <div className={`flex ${pages.length === 0 && "hidden"}`}>
-                <div className='flex flex-1 justify-center flex-wrap items-center gap-2'>
+            <div className={`flex flex-col sm:flex-row gap-4 sm:gap-2 ${pages.length === 0 && "hidden"}`}>
+                <div className='flex flex-1 justify-center items-center gap-2'>
                     {/* handle previous */}
                     <button
                         onClick={() => {
@@ -92,7 +92,44 @@ const ProductsSection = () => {
                         className={`btn btn-secondary btn-sm rounded ${currentPage === pages[pages.length - 1] && "hidden"}`}
                     >Next</button>
                 </div>
-                <p>Page {currentPage + 1} of {pages.length}</p>
+                <div className='flex flex-col sm:flex-row gap-6 items-center'>
+                    {/* show per page */}
+                    <div className='flex items-center gap-1'>
+                        <span>Show</span>
+                        <select
+                            onChange={(e) => {
+                                const limit = parseInt(e.target.value)
+                                setLimit(limit)
+                                handleResetSkipAndCurrentPage()
+                            }}
+                            className='select select-bordered select-sm rounded'
+                        >
+                            <option value={8}>8</option>
+                            <option value={12}>12</option>
+                            <option value={20}>20</option>
+                            <option value={40}>40</option>
+                        </select>
+                        <span>per page</span>
+                    </div>
+                    {/* jump to page */}
+                    <div className='flex items-center gap-1'>
+                        <span>Jump to page</span>
+                        <select
+                            onChange={(e) => {
+                                const page = parseInt(e.target.value)
+                                setCurrentPage(() => page)
+                                setSkip((page) * limit)
+                                topRef.current.scrollIntoView({ behavior: "smooth" })
+                            }}
+                            className='select select-bordered select-sm rounded'
+                        >
+                            {pages.map(page => <option
+                                value={page}
+                            >{page + 1}</option>)}
+                        </select>
+                    </div>
+                    <p>Page {currentPage + 1} of {pages.length}</p>
+                </div>
             </div>
         </section>
     );
