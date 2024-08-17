@@ -9,6 +9,7 @@ const ProductsSection = () => {
     const topRef = useRef(null)
     const [sortBy, setSortBy] = useState("releasedDate")
     const [categoryBy, setCategoryBy] = useState("")
+    const [brandBy, setBrandBy] = useState("");
     const [searchText, setSearchText] = useState("")
     const [priceRange, setPriceRange] = useState([0, 3000]);
     const [currentPage, setCurrentPage] = useState(0);
@@ -18,9 +19,16 @@ const ProductsSection = () => {
 
     // get total products count
     const { data: totalProducts = 0, isLoading: isCounting, error: countingError, refetch: reCount } = useQuery({
-        queryKey: [`total-products`, categoryBy, searchText, limit, priceRange],
+        queryKey: [
+            `total-products`,
+            categoryBy,
+            brandBy,
+            searchText,
+            limit,
+            priceRange
+        ],
         queryFn: async () => {
-            const { data } = await axiosInstance(`/total-products?category=${categoryBy}&search=${searchText}&minPrice=${priceRange[0]}&maxPrice=${priceRange[1]}`)
+            const { data } = await axiosInstance(`/total-products?category=${categoryBy}&brand=${brandBy}&search=${searchText}&minPrice=${priceRange[0]}&maxPrice=${priceRange[1]}`)
             // console.log(data);
             const totalProducts = parseInt(data?.totalProducts) || 0;
             const totalPages = Math.ceil(totalProducts / limit)
@@ -33,9 +41,18 @@ const ProductsSection = () => {
     // ---------------------------------------
     // get products
     const { data: products = [], isLoading, error, refetch } = useQuery({
-        queryKey: [`products`, sortBy, categoryBy, searchText, limit, skip, currentPage, priceRange],
+        queryKey: [`products`,
+            sortBy,
+            categoryBy,
+            brandBy,
+            searchText,
+            limit,
+            skip,
+            currentPage,
+            priceRange
+        ],
         queryFn: async () => {
-            const { data } = await axiosInstance(`/products?category=${categoryBy}&sort=${sortBy}&search=${searchText}&limit=${limit}&skip=${skip}&minPrice=${priceRange[0]}&maxPrice=${priceRange[1]}`)
+            const { data } = await axiosInstance(`/products?category=${categoryBy}&brand=${brandBy}&sort=${sortBy}&search=${searchText}&limit=${limit}&skip=${skip}&minPrice=${priceRange[0]}&maxPrice=${priceRange[1]}`)
             // console.log(data);
             return data
         }
@@ -56,7 +73,10 @@ const ProductsSection = () => {
                 setSearchText={setSearchText}
                 refetch={reCount}
                 setSortBy={setSortBy}
+                categoryBy={categoryBy}
+                brandBy={brandBy}
                 setCategoryBy={setCategoryBy}
+                setBrandBy={setBrandBy}
                 topRef={topRef}
                 resetSkipCPage={resetSkipCPage}
                 priceRange={priceRange}

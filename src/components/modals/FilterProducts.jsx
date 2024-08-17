@@ -3,12 +3,13 @@ import CloseModalButton from '../common/CloseModalButton';
 import Slider from '@mui/material/Slider';
 
 
-const FilterProducts = ({ setCategoryBy, resetSkipCPage, setShowModal, value, setValue, setPriceRange }) => {
+const FilterProducts = ({ setCategoryBy, resetSkipCPage, setShowModal, value, setValue, setPriceRange, setBrandBy, brandBy, categoryBy }) => {
 
     return (
         <section className='modal modal-open'>
-            <div className='modal-box relative'>
-                <div className='mb-4'>
+            <div className='modal-box relative pt-10'>
+                <div className='mb-4 form-control'>
+                    <label className='label label-text'>Select Category</label>
                     <select
                         onChange={(e) => {
                             let category = e.target.value;
@@ -16,15 +17,32 @@ const FilterProducts = ({ setCategoryBy, resetSkipCPage, setShowModal, value, se
                             resetSkipCPage()
                             setShowModal(false)
                         }}
-                        defaultValue={"all"}
+                        value={categoryBy}
                         className='select select-bordered'>
-                        <option className='hidden' >Select Category</option>
                         <option value="">All</option>
                         <option value="smartphone">Smart Phone</option>
                         <option value="tablet">iPad</option>
                         <option value="laptop">Laptop</option>
                         <option value="smartwatch">Watch</option>
                         <option value="airpods">AirPods</option>
+                    </select>
+                </div>
+                <div className='mb-4 form-control'>
+                    <label className='label label-text'>Select Brand</label>
+                    <select
+                        onChange={(e) => {
+                            let brand = e.target.value;
+                            setBrandBy(brand)
+                            resetSkipCPage()
+                            setShowModal(false)
+                        }}
+                        value={brandBy}
+                        className='select select-bordered'
+                    >
+                        <option value="">All</option>
+                        <option value="apple">Apple</option>
+                        <option value="samsung">Samsung</option>
+                        <option value="hp">hp</option>
                     </select>
                 </div>
                 <div className='p-4 bg-base-200 rounded-lg'>

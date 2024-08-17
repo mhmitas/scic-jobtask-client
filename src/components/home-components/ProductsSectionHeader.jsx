@@ -8,6 +8,9 @@ const ProductsSectionHeader = ({
     refetch,
     setSortBy,
     setCategoryBy,
+    categoryBy,
+    setBrandBy,
+    brandBy,
     topRef,
     resetSkipCPage,
     priceRange,
@@ -51,6 +54,9 @@ const ProductsSectionHeader = ({
             <div className='flex justify-end gap-4'>
                 {/* Filter controller part */}
                 <div className='form-controller'>
+                    <button className='btn text-base'>Reset</button>
+                </div>
+                <div className='form-controller'>
                     <button onClick={() => setShowFilterModal(true)} className='btn text-base'>Filter<GoFilter className='text-xl' /></button>
                 </div>
                 {/* sort by controller */}
@@ -70,7 +76,10 @@ const ProductsSectionHeader = ({
                 </div>
             </div>
             {showFilterModal && <FilterProducts
+                categoryBy={categoryBy}
+                brandBy={brandBy}
                 setCategoryBy={setCategoryBy}
+                setBrandBy={setBrandBy}
                 resetSkipCPage={resetSkipCPage}
                 setShowModal={setShowFilterModal}
                 value={value}
