@@ -3,6 +3,7 @@ import React, { useRef, useState } from 'react';
 import ProductCard from '../cards/ProductCard';
 import { axiosInstance } from '../../hooks/useAxios';
 import ProductsSectionHeader from './ProductsSectionHeader';
+import ProductCardSkeleton from '../skeletons/ProductCardSkeleton';
 
 const ProductsSection = () => {
     const topRef = useRef(null)
@@ -61,11 +62,12 @@ const ProductsSection = () => {
                 priceRange={priceRange}
                 setPriceRange={setPriceRange}
             />
-            {isLoading || isCounting ?
+            {isCounting ?
                 <p className='mb-4'>Loading...</p> :
                 <p className='mb-4'>Total Products: {totalProducts}</p>
             }
             <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 mb-10'>
+                {isLoading && <CardSkeletons />}
                 {products.map((product, index) => <ProductCard key={index} product={product} />)}
             </div>
             <div className={`flex flex-col sm:flex-row gap-4 sm:gap-2 ${pages.length === 0 && "hidden"}`}>
@@ -139,3 +141,12 @@ const ProductsSection = () => {
 };
 
 export default ProductsSection;
+
+function CardSkeletons() {
+    let skeletonArr = [...Array(8).keys()]
+    return (
+        <>
+            {skeletonArr.map(sk => <ProductCardSkeleton key={sk} />)}
+        </>
+    )
+}
