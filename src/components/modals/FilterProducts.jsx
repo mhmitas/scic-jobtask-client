@@ -6,8 +6,8 @@ import Slider from '@mui/material/Slider';
 const FilterProducts = ({ setCategoryBy, resetSkipCPage, setShowModal, value, setValue, setPriceRange, setBrandBy, brandBy, categoryBy }) => {
 
     return (
-        <section className='modal modal-open'>
-            <div className='modal-box relative pt-10'>
+        <section className='my-modal'>
+            <div className='relative pt-10 max-w-lg w-full bg-base-100 p-6 rounded-lg m-4'>
                 <div className='mb-4 form-control'>
                     <label className='label label-text'>Select Category</label>
                     <select

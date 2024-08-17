@@ -12,9 +12,10 @@ const ProductsSectionHeader = ({
     setBrandBy,
     brandBy,
     topRef,
-    resetSkipCPage,
     priceRange,
-    setPriceRange
+    setPriceRange,
+    resetSkipCPage,
+    resetAll,
 }) => {
     const [showFilterModal, setShowFilterModal] = useState(false);
     const [value, setValue] = useState([1, 3000]);
@@ -31,10 +32,10 @@ const ProductsSectionHeader = ({
     }
 
     return (
-        <header ref={topRef} className='max-w-3xl mx-auto *:mb-4 mb-6'>
+        <header ref={topRef} className='max-w-3xl mx-auto mb-6'>
             {/* search form */}
-            <form onSubmit={handleSearch} className='form-controller join w-full'>
-                <label className="input input-bordered flex items-center gap-2 join-item flex-1">
+            <form onSubmit={handleSearch} className='form-controller join w-full mb-4'>
+                <label className="input input-sm sm:input-md input-bordered flex items-center gap-2 join-item flex-1">
                     <FaSearch />
                     <input
                         onChange={(e) => {
@@ -49,15 +50,20 @@ const ProductsSectionHeader = ({
                         placeholder="Search"
                     />
                 </label>
-                <button type='submit' className='btn btn-primary join-item text-lg'><FaSearch /></button>
+                <button type='submit' className='btn btn-primary btn-sm sm:btn-md join-item text-lg'><FaSearch /></button>
             </form>
-            <div className='flex justify-end gap-4'>
+            <div className='flex flex-col sm:flex-row justify-end gap-4 mb-4'>
                 {/* Filter controller part */}
-                <div className='form-controller'>
-                    <button className='btn text-base'>Reset</button>
-                </div>
-                <div className='form-controller'>
-                    <button onClick={() => setShowFilterModal(true)} className='btn text-base'>Filter<GoFilter className='text-xl' /></button>
+                <div className='flex gap-4'>
+                    <div className='form-controller'>
+                        <button onClick={() => {
+                            resetAll()
+                            setValue([0, 3000])
+                        }} className='btn text-base'>Reset</button>
+                    </div>
+                    <div className='form-controller'>
+                        <button onClick={() => setShowFilterModal(true)} className='btn text-base'>Filter<GoFilter className='text-xl' /></button>
+                    </div>
                 </div>
                 {/* sort by controller */}
                 <div className='form-controller'>

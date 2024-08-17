@@ -30,7 +30,7 @@ const Footer = () => {
                         <label className="label">
                             <span className="label-text">Enter your email address</span>
                         </label>
-                        <div className="join">
+                        <div className="join hidden sm:flex">
                             <input type="text" placeholder="username@site.com" className="input input-bordered join-item" />
                             <button className="btn btn-primary join-item">Subscribe</button>
                         </div>

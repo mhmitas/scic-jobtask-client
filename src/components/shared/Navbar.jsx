@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { navlinks } from '../Navlinks/Navlinks';
 import ThemeController from '../controlers/ThemeControler';
+import { IoMdMenu } from "react-icons/io";
 import { Button, IconButton, Tooltip } from '@mui/material';
 import LogoutOutlinedIcon from '@mui/icons-material/LogoutOutlined';
 import { Link } from 'react-router-dom';
@@ -32,10 +33,20 @@ const Navbar = () => {
     return (
         <div className={`fixed top-0 w-full shadow-md transition-transform duration-300 ${isVisible ? 'translate-y-0' : '-translate-y-full'} z-50`}>
             <div className='flex items-center justify-between w-full py-2 lg:px-6 px-4 bg-base-100 shadow border border-base-100 min-h-16'>
-                <div>
-                    <Link to='/'><button className='btn btn-ghost text-xl sm:text-2xl font-semibold'>MhStore</button></Link>
+                <div className="dropdown">
+                    <div tabIndex={0} role="button" className="btn btn-ghost btn-circle md:hidden text-2xl">
+                        <IoMdMenu />
+                    </div>
+                    <ul
+                        tabIndex={0}
+                        className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow">
+                        {navlinks}
+                    </ul>
                 </div>
-                <div className="navbar-center flex flex-1 justify-center">
+                {/* <div>
+                    <Link to='/'><button className='btn btn-ghost text-xl sm:text-2xl font-semibold'>MhStore</button></Link>
+                </div> */}
+                <div className="navbar-center hidden md:flex justify-center">
                     <ul className="px-1 flex items-center menu menu-sm sm:menu-md">
                         {navlinks}
                     </ul>

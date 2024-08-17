@@ -63,6 +63,14 @@ const ProductsSection = () => {
         setCurrentPage(0)
         setPriceRange([0, 3000])
     }
+    function resetAll() {
+        setCategoryBy("")
+        setBrandBy("")
+        setSearchText("")
+        resetSkipCPage()
+        setLimit(8)
+        setSortBy("releasedDate")
+    }
 
     if (error || countingError) console.error(countingError);
 
@@ -78,9 +86,10 @@ const ProductsSection = () => {
                 setCategoryBy={setCategoryBy}
                 setBrandBy={setBrandBy}
                 topRef={topRef}
-                resetSkipCPage={resetSkipCPage}
                 priceRange={priceRange}
                 setPriceRange={setPriceRange}
+                resetSkipCPage={resetSkipCPage}
+                resetAll={resetAll}
             />
             {isCounting ?
                 <p className='mb-4'>Loading...</p> :
