@@ -33,8 +33,8 @@ const Navbar = () => {
     return (
         <div className={`fixed top-0 w-full shadow-md transition-transform duration-300 ${isVisible ? 'translate-y-0' : '-translate-y-full'} z-50`}>
             <div className='flex items-center justify-between w-full py-2 lg:px-6 px-4 bg-base-100 shadow border border-base-100 min-h-16'>
-                <div className="dropdown">
-                    <div tabIndex={0} role="button" className="btn btn-ghost btn-circle md:hidden text-2xl">
+                <div className="dropdown md:hidden">
+                    <div tabIndex={0} role="button" className="btn btn-ghost btn-circle text-2xl">
                         <IoMdMenu />
                     </div>
                     <ul
@@ -43,9 +43,9 @@ const Navbar = () => {
                         {navlinks}
                     </ul>
                 </div>
-                {/* <div>
+                <div>
                     <Link to='/'><button className='btn btn-ghost text-xl sm:text-2xl font-semibold'>MhStore</button></Link>
-                </div> */}
+                </div>
                 <div className="navbar-center hidden md:flex justify-center">
                     <ul className="px-1 flex items-center menu menu-sm sm:menu-md">
                         {navlinks}

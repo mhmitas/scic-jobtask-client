@@ -4,6 +4,7 @@ import ProductCard from '../cards/ProductCard';
 import { axiosInstance } from '../../hooks/useAxios';
 import ProductsSectionHeader from './ProductsSectionHeader';
 import ProductCardSkeleton from '../skeletons/ProductCardSkeleton';
+import HomeProductsPagination from './HomeProductsPagination';
 
 const ProductsSection = () => {
     const topRef = useRef(null)
@@ -99,72 +100,16 @@ const ProductsSection = () => {
                 {isLoading && <CardSkeletons />}
                 {products.map((product, index) => <ProductCard key={index} product={product} />)}
             </div>
-            <div className={`flex flex-col sm:flex-row gap-4 sm:gap-2 ${pages.length === 0 && "hidden"}`}>
-                <div className='flex flex-1 justify-center items-center gap-2'>
-                    {/* handle previous */}
-                    <button
-                        onClick={() => {
-                            if (currentPage === 0) {
-                                return console.log("Previous page do not exits");
-                            }
-                            setCurrentPage(() => currentPage - 1)
-                            setSkip((currentPage - 1) * limit)
-                            topRef.current.scrollIntoView({ behavior: "smooth" })
-                        }}
-                        className={`btn btn-secondary btn-sm rounded ${currentPage === 0 && "hidden"}`}
-                    >Previous</button>
-                    {/* handle next */}
-                    <button
-                        onClick={() => {
-                            if (currentPage === pages[pages.length - 1]) {
-                                return console.log("Previous page do not exits");
-                            }
-                            setCurrentPage(() => currentPage + 1)
-                            setSkip((currentPage + 1) * limit)
-                            topRef.current.scrollIntoView({ behavior: "smooth" })
-                        }}
-                        className={`btn btn-secondary btn-sm rounded ${currentPage === pages[pages.length - 1] && "hidden"}`}
-                    >Next</button>
-                </div>
-                <div className='flex flex-col sm:flex-row gap-6 items-center'>
-                    {/* show per page */}
-                    <div className='flex items-center gap-1'>
-                        <span>Show</span>
-                        <select
-                            onChange={(e) => {
-                                const limit = parseInt(e.target.value)
-                                setLimit(limit)
-                                resetSkipCPage()
-                            }}
-                            className='select select-bordered select-sm rounded'
-                        >
-                            <option value={8}>8</option>
-                            <option value={12}>12</option>
-                            <option value={20}>20</option>
-                            <option value={40}>40</option>
-                        </select>
-                        <span>per page</span>
-                    </div>
-                    {/* jump to page */}
-                    <div className='flex items-center gap-1'>
-                        <span>Jump to page</span>
-                        <select
-                            onChange={(e) => {
-                                const page = parseInt(e.target.value)
-                                setCurrentPage(() => page)
-                                setSkip((page) * limit)
-                                topRef.current.scrollIntoView({ behavior: "smooth" })
-                            }}
-                            className='select select-bordered select-sm rounded'
-                        >
-                            {pages.map(page => <option
-                                value={page} key={page}
-                            >{page + 1}</option>)}
-                        </select>
-                    </div>
-                    <p>Page {currentPage + 1} of {pages.length}</p>
-                </div>
-            </div>
+            <HomeProductsPagination
+                pages={pages}
+                currentPage={currentPage}
+                setCurrentPage={setCurrentPage}
+                topRef={topRef}
+                limit={limit}
+                setLimit={setLimit}
+                setSkip={setSkip}
+                resetSkipCPage={resetSkipCPage}
+            />
         </section>
     );
 };
