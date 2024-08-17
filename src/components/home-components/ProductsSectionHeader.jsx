@@ -56,8 +56,6 @@ const ProductsSectionHeader = ({
                         onChange={(e) => {
                             let sort = e.target.value;
                             setSortBy(sort)
-                            console.log(sort);
-
                         }}
                         className='select select-bordered'
                     >
