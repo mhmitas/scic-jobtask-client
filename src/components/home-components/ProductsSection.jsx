@@ -9,7 +9,6 @@ const ProductsSection = () => {
     const [sortBy, setSortBy] = useState("releasedDate")
     const [categoryBy, setCategoryBy] = useState("")
     const [searchText, setSearchText] = useState("")
-    useState
     const [currentPage, setCurrentPage] = useState(0);
     const [limit, setLimit] = useState(8)
     const [skip, setSkip] = useState(0)
@@ -40,7 +39,7 @@ const ProductsSection = () => {
         }
     })
 
-    function handleResetSkipAndCurrentPage() {
+    function resetSkipCPage() {
         setSkip(0)
         setCurrentPage(0)
     }
@@ -56,7 +55,7 @@ const ProductsSection = () => {
                 setSortBy={setSortBy}
                 setCategoryBy={setCategoryBy}
                 topRef={topRef}
-                handleResetSkipAndCurrentPage={handleResetSkipAndCurrentPage}
+                resetSkipCPage={resetSkipCPage}
             />
             {isLoading || isCounting ?
                 <p className='mb-4'>Loading...</p> :
@@ -100,7 +99,7 @@ const ProductsSection = () => {
                             onChange={(e) => {
                                 const limit = parseInt(e.target.value)
                                 setLimit(limit)
-                                handleResetSkipAndCurrentPage()
+                                resetSkipCPage()
                             }}
                             className='select select-bordered select-sm rounded'
                         >

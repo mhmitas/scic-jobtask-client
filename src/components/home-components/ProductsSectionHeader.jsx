@@ -3,7 +3,14 @@ import { FaSearch } from 'react-icons/fa';
 import FilterProducts from '../modals/FilterProducts';
 import { GoFilter } from 'react-icons/go';
 
-const ProductsSectionHeader = ({ setSearchText, refetch, setSortBy, setCategoryBy, topRef, handleResetSkipAndCurrentPage }) => {
+const ProductsSectionHeader = ({
+    setSearchText,
+    refetch,
+    setSortBy,
+    setCategoryBy,
+    topRef,
+    resetSkipCPage
+}) => {
     const [showFilterModal, setShowFilterModal] = useState(false);
 
     function handleSearch(e) {
@@ -14,11 +21,12 @@ const ProductsSectionHeader = ({ setSearchText, refetch, setSortBy, setCategoryB
         }
         setSearchText(texts)
         setSortBy("")
-        handleResetSkipAndCurrentPage()
+        resetSkipCPage()
     }
 
     return (
         <header ref={topRef} className='max-w-3xl mx-auto *:mb-4 mb-6'>
+            {/* search form */}
             <form onSubmit={handleSearch} className='form-controller join w-full'>
                 <label className="input input-bordered flex items-center gap-2 join-item flex-1">
                     <FaSearch />
@@ -38,9 +46,11 @@ const ProductsSectionHeader = ({ setSearchText, refetch, setSortBy, setCategoryB
                 <button type='submit' className='btn btn-primary join-item text-lg'><FaSearch /></button>
             </form>
             <div className='flex justify-end gap-4'>
+                {/* Filter controller part */}
                 <div className='form-controller'>
-                    <button onClick={() => setShowFilterModal(true)} className='btn text-base'>Filter<GoFilter /></button>
+                    <button onClick={() => setShowFilterModal(true)} className='btn text-base'>Filter<GoFilter className='text-xl' /></button>
                 </div>
+                {/* sort by controller */}
                 <div className='form-controller'>
                     <select
                         onChange={(e) => {
@@ -58,7 +68,11 @@ const ProductsSectionHeader = ({ setSearchText, refetch, setSortBy, setCategoryB
                     </select>
                 </div>
             </div>
-            {showFilterModal && <FilterProducts setCategoryBy={setCategoryBy} handleResetSkipAndCurrentPage={handleResetSkipAndCurrentPage} setShowModal={setShowFilterModal} />}
+            {showFilterModal && <FilterProducts
+                setCategoryBy={setCategoryBy}
+                resetSkipCPage={resetSkipCPage}
+                setShowModal={setShowFilterModal}
+            />}
         </header>
     );
 };

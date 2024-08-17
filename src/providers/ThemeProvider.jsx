@@ -67,7 +67,7 @@ const darkTheme = createTheme({
             main: "#101010"
         },
         'base-content': {
-            main: 'white'
+            main: '#fff'
         },
         background: {
             default: '#fff',
