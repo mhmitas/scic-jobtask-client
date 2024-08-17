@@ -1,14 +1,9 @@
-import React, { useRef, useState } from 'react';
+import React from 'react';
 import CloseModalButton from '../common/CloseModalButton';
 import Slider from '@mui/material/Slider';
 
 
-const FilterProducts = ({ setCategoryBy, resetSkipCPage, setShowModal }) => {
-    const [value, setValue] = useState([1, 3000]);
-    const [priceRange, setPriceRange] = useState([0, 3000]);
-    const priceRef = useRef([0, 3000]);
-    // console.log({ priceRange });
-
+const FilterProducts = ({ setCategoryBy, resetSkipCPage, setShowModal, value, setValue, setPriceRange }) => {
 
     return (
         <section className='modal modal-open'>
@@ -34,8 +29,14 @@ const FilterProducts = ({ setCategoryBy, resetSkipCPage, setShowModal }) => {
                 </div>
                 <div className='p-4 bg-base-200 rounded-lg'>
                     <div className='mb-10 flex items-center gap-2'>
-                        <p className='text-xl font-semibold'>Price</p>
-                        <button className='btn btn-sm btn-primary rounded'>Apply</button>
+                        <p className='text-xl font-semibold'>Price Range</p>
+                        <button
+                            onClick={() => {
+                                setPriceRange(value)
+                                setShowModal(false)
+                            }}
+                            className='btn btn-sm btn-primary rounded'
+                        >Apply</button>
                     </div>
                     <MinimumDistanceSlider value={value} setValue={setValue} />
                 </div>

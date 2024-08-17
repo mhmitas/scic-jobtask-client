@@ -9,9 +9,12 @@ const ProductsSectionHeader = ({
     setSortBy,
     setCategoryBy,
     topRef,
-    resetSkipCPage
+    resetSkipCPage,
+    priceRange,
+    setPriceRange
 }) => {
     const [showFilterModal, setShowFilterModal] = useState(false);
+    const [value, setValue] = useState([1, 3000]);
 
     function handleSearch(e) {
         e.preventDefault()
@@ -70,6 +73,10 @@ const ProductsSectionHeader = ({
                 setCategoryBy={setCategoryBy}
                 resetSkipCPage={resetSkipCPage}
                 setShowModal={setShowFilterModal}
+                value={value}
+                setValue={setValue}
+                priceRange={priceRange}
+                setPriceRange={setPriceRange}
             />}
         </header>
     );
